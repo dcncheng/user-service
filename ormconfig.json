@@ -1,0 +1,8 @@
+{
+    "name": "default",
+    "type": "mongodb",
+    "url": "mongodb://localhost/user",
+    "synchronize": true,
+    "useUnifiedTopology": true,
+    "entities": ["dist/users/**/*.js"]
+}
