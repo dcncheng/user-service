@@ -38,6 +38,13 @@ export class UserRepository extends Repository<User> {
         }
     }
 
+    async checkUsername(username: string) {
+        const queryJson = {
+            "username": username 
+        };
+        return this.findOne(queryJson);
+    }
+
     private async hashPassword (password: string, salt: string): Promise<string> {
         return bcrypt.hash(password, salt);
     }

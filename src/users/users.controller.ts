@@ -1,4 +1,4 @@
-import { Controller, Post, Body, ValidationPipe, UseGuards, Req, HttpCode } from '@nestjs/common';
+import { Controller, Post, Body, ValidationPipe, UseGuards, HttpCode, Get, Param } from '@nestjs/common';
 import { AuthCredentialsDto } from './dto/auth-credentials.dto';
 import { UsersService } from './users.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -26,5 +26,10 @@ export class UsersController {
     @HttpCode(200)
     authenticate(@GetUser() user: User) {
         return {username: user.username};
+    }
+
+    @Get('/search/:username')
+    checkExist(@Param('username') username: string) {
+        return this.usersService.checkUsername(username);
     }
 }
